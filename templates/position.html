@@ -1,0 +1,141 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>51jobData</title>
+<!-- for-mobile-apps -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Child Learn Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEristatic/csson, Motorola web design" />
+
+    <script>
+        addEventListener("load", function () {
+            setTimeout(hideURLbar, 0);
+        }, false);
+
+        function hideURLbar() {
+            window.scrollTo(0, 1);
+        }
+    </script>
+	
+	<!-- static/css files -->
+    <link href="static/css/bootstrap.css" rel='stylesheet' type='text/css' /><!-- bootstrap static/css -->
+    <link href="static/css/style.css" rel='stylesheet' type='text/css' /><!-- custom static/css -->
+	<link href="static/css/static/css_slider.css" type="text/css" rel="stylesheet" media="all">
+    <link href="static/css/font-awesome.min.css" rel="stylesheet"><!-- fontawesome static/css -->
+	<!-- //static/css files -->
+	
+	<!-- google fonts -->
+	<link href="//fonts.googleapis.com/static/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i&amp;subset=latin-ext" rel="stylesheet">
+	<!-- //google fonts -->
+	
+</head>
+<body>
+
+<!-- header -->
+<header>
+	<div class="container">
+		<!-- nav -->
+		<nav class="py-3 d-lg-flex">
+			<div id="logo">
+				<h1><a href="/index"><img src="static/images/s2.png" alt="">51jobSpider </a></h1>
+			</div>
+			<label for="drop" class="toggle"><span class="fa fa-bars"></span></label>
+			<input type="checkbox" id="drop" />
+			<ul class="menu ml-auto mt-1">
+				<li class="active"><a href="/">主页</a></li>
+				<li class=""><a href="/position">职位数据</a></li>
+				<li class=""><a href="/salary">薪资统计</a></li>
+				<li class=""><a href="/keyword">关键词统计</a></li>
+			</ul>
+		</nav>
+		<!-- //nav -->
+	</div>
+</header>
+<!-- //header -->
+
+<!-- banner -->
+<div class="banner" id="home">
+	<div class="layer">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-7 banner-text-w3pvt">
+					<!-- banner slider-->
+
+					<!-- //banner slider-->
+				</div>
+				<div class="col-lg-5 col-md-8 px-lg-3 px-0">
+					<div class="banner-form-w3 ml-lg-5">
+						<div class="padding">
+							<!-- banner form -->
+							<!-- //banner form -->
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- //banner -->
+
+<!-- stats section -->
+<section class="section-stats" id="stats">
+	<div class="py-5"  style="background:rgb(252,252,252)">
+		<div class="container py-lg-5">
+	    <table class="table tab-content">
+            <tr>                            <!-- 先写第一行，tr代表一行，td代表一列 -->
+                <td>序号</td>
+                <td>城市名称</td>
+                <td>岗位名称</td>
+                <td>招聘条件</td>
+                <td>公司名称</td>
+                <td>公司类型</td>
+                <td>公司规模</td>
+                <td>公司福利</td>
+                <td>薪酬</td>
+                <td>岗位更新日期</td>
+            </tr>
+            {% for position in positions %}             <!-- 用大括号和百分号括起来的控制结构，循环给每一行赋值 -->
+                <tr>
+                    <td>{{ position[0] }}</td>
+                    <td>{{ position[1] }}</td>
+                    <td>{{ position[2] }}</td>
+                    <td>
+                        <a href="{{ position[11] }}" target="blank"> <!-- 在position【3】上赋一个链接 -->
+                        {{ position[3] }}
+                        </a>
+                    </td>
+                    <td>{{ position[4] }}</td>
+                    <td>{{ position[5] }}</td>
+                    <td>{{ position[6] }}</td>
+                    <td>{{ position[7] }}</td>
+                    <td>{{ position[8] }}</td>
+                    <td>{{ position[12] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+		</div>
+	</div>
+</section>
+<!-- //stats section -->
+
+
+
+<!-- copyright -->
+<section class="copyright">
+	<div class="container py-4">
+	</div>
+</section>
+<!-- //copyright -->
+
+<!-- move top -->
+<div class="move-top text-right">
+	<a href="#home" class="move-top"> 
+		<span class="fa fa-angle-up  mb-3" aria-hidden="true"></span>
+	</a>
+</div>
+<!-- move top -->
+
+</body>
+</html>
