@@ -118,7 +118,11 @@ end);
 def keyword1():
     #清除上次搜索产生的word图片
     if os.path.exists(r'.\static\pic\word.jpg'):
+<<<<<<< HEAD
         os.remove(r'.\static\pic\word.jpg')
+=======
+       os.remove(r'.\static\pic\word.jpg')
+>>>>>>> a2c6f43... second commit
     # 准备词云的词
     con = _sqlite3.connect('51job.db')
     cur = con.cursor()
@@ -148,9 +152,15 @@ def keyword1():
     fig = plt.figure(1)
     plt.imshow(wc)
     plt.axis('off') #是否显示坐标轴
+<<<<<<< HEAD
     #plt.show()     #显示生成的词云图片
     #输出词云图片到文件
     plt.savefig(r'.\static\pic\word.jpg',dpi=2000)
+=======
+
+    #输出词云图片到文件
+    plt.savefig(r'.\static\pic\word1.jpg',dpi=1000)
+>>>>>>> a2c6f43... second commit
 
     return render_template('keyword.html')
 if __name__ == '__main__':
