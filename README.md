@@ -18,7 +18,7 @@ def main():
 ### 爬虫代码+flask框架，实现爬取数据的可视化效果
 打开DEBUG模式，运行51jobflask项目（app.py中对test51job.py进行了调用），打开http://127.0.0.1:5000/ ，在主页输入关键字，选择城市：
 ![image](https://github.com/tansimin-crypto/51job-/blob/master/static/pic/search.jpg)
-输入后点击Get Started按钮，当数据爬取完毕后，自动跳转职位详情页面：
+输入后点击Get Started按钮，当数据爬取完毕后，自动跳转职位详情页面，其中点击招聘条件列即可跳转至51job的详情描述页：
 ![image](https://github.com/tansimin-crypto/51job-/blob/master/static/pic/positions.jpg)
 薪资统计是按月薪大小对所有信息进行降序排列，效果如下，点击导航栏即可跳转：
 ![image](https://github.com/tansimin-crypto/51job-/blob/master/static/pic/salary.png)
