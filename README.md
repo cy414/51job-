@@ -23,7 +23,7 @@ def main():
 薪资统计是按月薪大小对所有信息进行降序排列，效果如下，点击导航栏即可跳转：
 ![image](https://github.com/tansimin-crypto/51job-/blob/master/static/pic/salary.png)
 关键词汇总了所有公司的福利简述，并提取其中的关键字形成词云：
-![image](https://github.com/tansimin-crypto/51job-/blob/master/static/pic/salary.png)
+![image](https://github.com/tansimin-crypto/51job-/blob/master/static/pic/companysalary.jpg)
 
 ## 代码解释
 
