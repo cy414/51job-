@@ -6,6 +6,7 @@
 
 ### 直接运行爬虫代码test51job.py
 爬虫程序的getInputdata()函数获取用户在网页端输入的岗位关键字与选择的城市（共五个城市可供选择），在main函数中屏蔽调用getInputdata()，放开手动输入，即可单独运行爬虫程序，如下：
+```
 def main():
     #若须单独执行test51job.py，可将下面四行的注释取消掉，并注释第五行city,keyword = getInputdata()
     print("请输入想查询的城市")
@@ -13,6 +14,7 @@ def main():
     print("请输入想查询的职位名")
     keyword = input()
     #city,keyword = getInputdata()
+```
 ### 爬虫代码+flask框架，实现爬取数据的可视化效果
 直接运行51jobflask项目，打开debug模式，app.py中对test51job.py进行了调用
 
