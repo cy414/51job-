@@ -13,17 +13,26 @@ import xlwt #进行excel操作
 import _sqlite3 #进行SQLlite数据库操作
 
 #正则匹配规则，以此匹配关键数据，getData函数使用
-
 #findPositionname = re.compile(r'<a href="(.*)">')
+
 findJobname = re.compile(r'"job_name":(.*?),')
+
 findCompanyname = re.compile(r'"company_name":(.*?),')
+
 #findWorkarea = re.compile(r'"workarea_text":(.*?),')
+
 findUpadatetime =re.compile(r'"updatedate":(.*?),')
+
 findCompanytype = re.compile(r'"companytype_text":(.*?),')
+
 findBriefrequests = re.compile(r'"attribute_text":\[(.*?)]')
+
 findJobwelfare = re.compile(r'"jobwelf":(.*?),')
+
 findProvidesalary = re.compile(r'"providesalary_text":(.*?),')
+
 findCompanysize = re.compile(r'"companysize_text":(.*?),')
+
 findDetailmessage = re.compile(r'"job_href":(.*?),')
 
 
@@ -36,37 +45,59 @@ findDetailmessage = re.compile(r'"job_href":(.*?),')
 
 #得到指定一个URL的网页内容
 def askURL(url):
-    #ctrl+shift+j 合并为一行
-    head = {                                            #头部信息：模拟浏览器头部信息，向51job服务器发送消息
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36"
+    
+    #头部信息：模拟浏览器头部信息，向51job服务器发送消息
+    head = {   
+        #用户代理：告诉51job我们是什么类型的机器/浏览器
+        #本质上是告诉浏览器我们能接受什么类型的文件
+        "User-Agent":
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
+            AppleWebKit/537.36 (KHTML, like Gecko) 
+            Chrome/81.0.4044.92 Safari/537.36"
+        
         "Accept-Language: zh-CN,zh;q=0.9"
+        
         "Accept-Encoding: gzip, deflate, br"
-    }                                                   #用户代理：告诉51job我们是什么类型的机器/浏览器，本质上是告诉浏览器我们能接受什么类型的文件
-
-    request = urllib.request.Request(url,headers=head)  #封装出一个request对象
+    }                                                   
+    
+    #封装出一个request对象
+    request = urllib.request.Request(url,headers=head)  
     html = ""
+    
     try:
-        response = urllib.request.urlopen(request)      #接受回来的response对象，含有整个网页的信息
-        html = response.read().decode("gbk")            #解码整个网页的信息：从51job网页F12查看源码，得知该网站编码为gbk，故以gbk解码
-    except urllib.error.URLError as e:                  #可返回未读取到的原因
+        #接受回来的response对象，含有整个网页的信息
+        response = urllib.request.urlopen(request)      
+        #解码整个网页的信息：从51job网页F12查看源码，得知该网站编码为gbk，故以gbk解码
+        html = response.read().decode("gbk")     
+        
+    #可返回未读取到的原因    
+    except urllib.error.URLError as e:                  
         if hasattr(e,"code"):
             print(e.code)
         if hasattr(e,"reason"):
             print(e.reason)
 
     return html
+
+
 def getData(url,city):
     html = askURL(url)
-    soup = BeautifulSoup(html, "html.parser")            #使用html解析器解析html对象，形成soup树形结构对象
+    
+    #使用html解析器解析html对象，形成soup树形结构对象
+    soup = BeautifulSoup(html, "html.parser")      
+    
     #item = soup.findAll(name="script", type="text/javascript")
     #print(soup)
     #item = soup.find_all(lambda tag: tag.name == 'script' and tag.get('type') == ['text/javascript'] and 'id' not in tag.attrs)
-    item = soup.find_all(lambda tag: tag.name == 'script' and 'src' not in tag.attrs and 'type' in tag.attrs)   #筛选出便签含有script开头，含有type属性但不含有src属性的内容
+    
+    #筛选出便签含有script开头，含有type属性但不含有src属性的内容
+    item = soup.find_all(lambda tag: tag.name == 'script' and 'src' not in tag.attrs and 'type' in tag.attrs)   
 
     # kk = re.compile(r'<div class="el">(.*?)</div>',re.S)
     # soup = str(soup)
     # item = re.findall(kk,soup)
     #print(item)
+    
     for data in item:
         alldata = []
         partdata = []
@@ -201,7 +232,9 @@ def getData(url,city):
             #partdata.append(newprovidesalary[i])
             partdata.append(newdetailmessage[i])
             partdata.append(updatetime[i])
-            alldata.append(partdata)                #将一条职位的详情信息汇总至alldata数组，清空partdata等待下一次赋值
+            
+            #将一条职位的详情信息汇总至alldata数组，清空partdata等待下一次赋值
+            alldata.append(partdata)                
             partdata = []
         #len(alldata)
         #print(alldata)
