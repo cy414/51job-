@@ -1,9 +1,3 @@
-#-*- coding = utf-8 -*-
-#@Time : 2020/7/26 10:17
-#@Author : simintan
-#@File : test51job.py
-#@Software : PyCharm
-
 
 from bs4 import BeautifulSoup   #网页解析获取数据
 import urllib.request,urllib.error,urllib.parse  #指定url，获取网络数据
@@ -51,9 +45,7 @@ def askURL(url):
         #用户代理：告诉51job我们是什么类型的机器/浏览器
         #本质上是告诉浏览器我们能接受什么类型的文件
         "User-Agent":
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) 
-            AppleWebKit/537.36 (KHTML, like Gecko) 
-            Chrome/81.0.4044.92 Safari/537.36"
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.92 Safari/537.36"
         
         "Accept-Language: zh-CN,zh;q=0.9"
         
