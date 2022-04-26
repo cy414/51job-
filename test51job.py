@@ -1,9 +1,3 @@
-#-*- coding = utf-8 -*-
-#@Time : 2020/7/26 10:17
-#@Author : simintan
-#@File : test51job.py
-#@Software : PyCharm
-
 
 from bs4 import BeautifulSoup   #网页解析获取数据
 import urllib.request,urllib.error,urllib.parse  #指定url，获取网络数据
